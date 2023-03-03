@@ -1,4 +1,7 @@
-﻿using GBertolini.UsersService.Business.Users.Interfaces;
+﻿using AutoMapper;
+using GBertolini.UsersService.Business.Users.Interfaces;
+using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,18 @@ namespace GBertolini.UsersService.Business.Users.Implementation
 {
     public class UsersBusiness : IUsersBusiness
     {
+        private readonly IMapper _mapper;
+
+        public UsersBusiness(IMapper mapper)
+        {
+            _mapper = mapper;   
+        }
+
+        public Task<UserDto> Create(UserDto userDto)
+        {
+            User userModel = _mapper.Map<User>(userDto);
+
+            return Task.FromResult(userDto);
+        }
     }
 }

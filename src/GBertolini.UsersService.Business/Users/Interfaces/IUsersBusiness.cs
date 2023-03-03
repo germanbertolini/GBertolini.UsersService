@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GBertolini.UsersService.Business.Users.Interfaces
 {
-    public class IUsersBusiness
+    public interface IUsersBusiness
     {
     }
 }
