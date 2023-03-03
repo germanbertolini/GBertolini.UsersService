@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Adding custom filter and middleware
+// Adding custom filter
 builder.Services.AddValidateInputModelFilter();
 
 var app = builder.Build();
@@ -27,6 +27,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Using custom middleware
+app.UseInterceptorErrorHandlingMiddleware();
 
 app.MapControllers();
 
