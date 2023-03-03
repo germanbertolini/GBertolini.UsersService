@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using GBertolini.UsersService.Business.Users.Interfaces;
 using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Factories;
 using GBertolini.UsersService.Models.Models;
+using GBertolini.UsersService.Models.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace GBertolini.UsersService.Business.Users.Implementation
 
         public Task<UserDto> Create(UserDto userDto)
         {
-            User userModel = _mapper.Map<User>(userDto);
+            IUser userModel = UserFactory.Create(userDto);
 
             return Task.FromResult(userDto);
         }

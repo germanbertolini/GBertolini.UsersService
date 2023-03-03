@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
 using GBertolini.UsersService.Models.Dto;
-using GBertolini.UsersService.Models.Enums;
-using GBertolini.UsersService.Models.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GBertolini.UsersService.Models.Extensions;
+using GBertolini.UsersService.Models.Models.Implementation;
 
 namespace GBertolini.UsersService.Models.AutoMapperProfiles
 {
@@ -14,7 +9,7 @@ namespace GBertolini.UsersService.Models.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<UserDto, User>()
+            CreateMap<User, UserDto>()
                     .ForMember(
                         dest => dest.Name,
                         opt => opt.MapFrom(src => src.Name)
@@ -28,18 +23,18 @@ namespace GBertolini.UsersService.Models.AutoMapperProfiles
                         opt => opt.MapFrom(src => src.Address)
                     )
                     .ForMember(
-                        dest => dest.Phone,
-                        opt => opt.MapFrom(src => src.Phone)
+                        dest => dest.UserType,
+                        opt => opt.MapFrom(src => src.ToEnum())
                     )
                     .ForMember(
-                        dest => dest.UserType,
-                        opt => opt.MapFrom(src => src.UserType)
+                        dest => dest.Phone,
+                        opt => opt.MapFrom(src => src.Phone)
                     )
                     .ForMember(
                         dest => dest.Money,
                         opt => opt.MapFrom(src => src.Money)
                     )
-                .ReverseMap();
+                    .ReverseMap();
         }
     }
 }
