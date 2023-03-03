@@ -12,6 +12,11 @@ namespace GBertolini.UsersService.Models.Dto
         [JsonPropertyName("errors")]
         public List<string> Errors { get;  set; }
 
+        public ErrorResponseDto()
+        {
+            Errors = new List<string>();
+        }
+
         public ErrorResponseDto(string error)
         {
             Errors = new List<string> { error };
