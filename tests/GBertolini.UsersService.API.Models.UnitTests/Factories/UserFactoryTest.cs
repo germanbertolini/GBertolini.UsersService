@@ -14,6 +14,7 @@ using GBertolini.UsersService.API.Models.UnitTests.Helpers;
 using GBertolini.UsersService.Models.Extensions;
 using AutoMapper;
 using GBertolini.UsersService.Models.AutoMapperProfiles;
+using GBertolini.UsersService.Models.Sanitizers;
 
 namespace GBertolini.UsersService.API.Models.UnitTests.Factories
 {
@@ -38,6 +39,10 @@ namespace GBertolini.UsersService.API.Models.UnitTests.Factories
             //Asserts
             result.Should().BeOfType<NormalUser>();
             result.ToEnum().Should().Be(UserType.Normal);
+            result.Name.Should().Be(dto.Name);
+            result.Email.Should().Be(EmailSanitizer.Sanitize(dto.Email));
+            result.Address.Should().Be(dto.Address);
+            result.Phone.Should().Be(dto.Phone);
         }
 
         [Fact]
@@ -52,6 +57,10 @@ namespace GBertolini.UsersService.API.Models.UnitTests.Factories
             //Asserts
             result.Should().BeOfType<PremiumUser>();
             result.ToEnum().Should().Be(UserType.Premium);
+            result.Name.Should().Be(dto.Name);
+            result.Email.Should().Be(EmailSanitizer.Sanitize(dto.Email));
+            result.Address.Should().Be(dto.Address);
+            result.Phone.Should().Be(dto.Phone);
         }
 
         [Fact]
@@ -66,6 +75,25 @@ namespace GBertolini.UsersService.API.Models.UnitTests.Factories
             //Asserts
             result.Should().BeOfType<SuperUser>();
             result.ToEnum().Should().Be(UserType.SuperUser);
+            result.Name.Should().Be(dto.Name);
+            result.Email.Should().Be(EmailSanitizer.Sanitize(dto.Email));
+            result.Address.Should().Be(dto.Address);
+            result.Phone.Should().Be(dto.Phone);
+        }
+
+        [Fact]
+        public void UserObjectCreation_EmailToSanitize_ReturnsEmailWithNormalizedDomain()
+        {
+            //Arrange
+            var dto = TestHelper.CreateUserDto(money: 100, userType: UserType.SuperUser);
+            dto.Email = "german.bertolini+German Bertolini@gmail.com";
+
+            //Act
+            var result = UserFactory.Create(_mapper, dto);
+
+            //Asserts
+            result.Should().BeOfType<SuperUser>();
+            result.Email.Should().Be("germanbertolini@gmail.com");
         }
 
         [Fact]

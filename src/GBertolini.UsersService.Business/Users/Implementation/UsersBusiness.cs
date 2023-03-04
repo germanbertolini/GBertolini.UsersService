@@ -23,7 +23,7 @@ namespace GBertolini.UsersService.Business.Users.Implementation
 
         public Task<UserDto> Create(UserDto userDto)
         {
-            IUser userModel = UserFactory.Create(userDto);
+            IUser userModel = UserFactory.Create(_mapper, userDto);
 
             return Task.FromResult(userDto);
         }
