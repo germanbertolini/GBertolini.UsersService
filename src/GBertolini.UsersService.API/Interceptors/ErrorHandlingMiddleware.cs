@@ -1,5 +1,5 @@
 ﻿using GBertolini.UsersService.Business.Exceptions;
-using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Dto.Response;
 using Newtonsoft.Json;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -56,7 +56,7 @@ namespace GBertolini.UsersService.API.Interceptors
         {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = statusCode;
-            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponseDto(responseMessage)));
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ResponseWithErrorsDto(responseMessage)));
         }
     }
 }

@@ -2,6 +2,7 @@ using FluentAssertions;
 using GBertolini.UsersService.API.Controllers;
 using GBertolini.UsersService.API.IntegrationTests.Helpers;
 using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Dto.Response;
 using GBertolini.UsersService.Models.Enums;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
@@ -25,19 +26,12 @@ namespace GBertolini.UsersService.API.IntegrationTests
         public async Task Create_MissingOneField_ReturnsBadRequestWithOneError()
         {
             //Arrange
-            var payload = new UserDto
-            {
-                Name = null,
-                Address = "Buenos Aires, Argentina",
-                Email = "german.bertolini@gmail.com",
-                Money = 100,
-                Phone = "1234-1234",
-                UserType = UserType.Normal
-            };
+            var payload = TestHelper.CreateUserDto(money: 100, userType: UserType.Normal);
+            payload.Name = null;
 
             //Act
             var response = await _httpClient.PostAsync("/users/create", TestHelper.BuildJsonContent(payload));
-            var responseObj = await TestHelper.TryToReadResponseAsync<ErrorResponseDto>(response);
+            var responseObj = await TestHelper.TryToReadResponseAsync<ResponseWithErrorsDto>(response);
 
             //Asserts
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -58,7 +52,7 @@ namespace GBertolini.UsersService.API.IntegrationTests
 
             //Act
             var response = await _httpClient.PostAsync("/users/create", TestHelper.BuildJsonContent(payload));
-            var responseObj = await TestHelper.TryToReadResponseAsync<ErrorResponseDto>(response);
+            var responseObj = await TestHelper.TryToReadResponseAsync<ResponseWithErrorsDto>(response);
 
             //Asserts
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -73,7 +67,7 @@ namespace GBertolini.UsersService.API.IntegrationTests
 
             //Act
             var response = await _httpClient.PostAsync("/users/create", TestHelper.BuildJsonContent(payload));
-            var responseObj = await TestHelper.TryToReadResponseAsync<ErrorResponseDto>(response);
+            var responseObj = await TestHelper.TryToReadResponseAsync<ResponseWithErrorsDto>(response);
 
             //Asserts
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -84,15 +78,7 @@ namespace GBertolini.UsersService.API.IntegrationTests
         public async Task Create_AllDataIsCorrect_ReturnsOk()
         {
             //Arrange
-            var payload = new UserDto
-            {
-                Name = "German Bertolini",
-                Address = "Buenos Aires, Argentina",
-                Email = "german.bertolini@gmail.com",
-                Money = 100,
-                Phone = "1234-1234",
-                UserType = UserType.Normal
-            };
+            var payload = TestHelper.CreateUserDto(money: 100, userType: UserType.Normal);
 
             //Act
             var response = await _httpClient.PostAsync("/users/create", TestHelper.BuildJsonContent(payload));

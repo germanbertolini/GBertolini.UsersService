@@ -13,6 +13,9 @@ namespace GBertolini.UsersService.API.Models.UnitTests.Helpers
 {
     public static class TestHelper
     {
+        /// <summary>
+        /// Creates an instance of UserDto using example data
+        /// </summary>
         public static UserDto CreateUserDto(decimal money, UserType userType)
             => new UserDto
             {
@@ -24,6 +27,9 @@ namespace GBertolini.UsersService.API.Models.UnitTests.Helpers
                 UserType = userType
             };
 
+        /// <summary>
+        /// Instance AutoMapper using the same configuration than injected version
+        /// </summary>
         public static IMapper InstanceAutoMapper()
             => MapperConfig.InitializeAutoMapper().CreateMapper();
     }

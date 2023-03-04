@@ -1,5 +1,6 @@
 using GBertolini.UsersService.API.Filters;
 using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Dto.Response;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
@@ -19,9 +20,9 @@ namespace GBertolini.UsersService.API.Controllers
 
         [HttpPost]
         [ActionName("create")]
-        public Task<UserDto> PostCreateAsync([FromBody] UserDto userDto)
+        public Task<ResponseDto<UserDto>> PostCreateAsync([FromBody] UserDto userDto)
         {
-            return Task.FromResult(new UserDto());
+            return Task.FromResult(new ResponseDto<UserDto>(new UserDto()));
         }
     }
 }

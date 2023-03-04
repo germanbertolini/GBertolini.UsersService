@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Dto.Response;
 
 namespace GBertolini.UsersService.API.Filters
 {
@@ -15,7 +15,7 @@ namespace GBertolini.UsersService.API.Filters
                                     .Select(err => err.Errors.First().ErrorMessage)
                                     .ToList();
 
-                context.Result = new JsonResult(new ErrorResponseDto(errorList)) { StatusCode = StatusCodes.Status400BadRequest };
+                context.Result = new JsonResult(new ResponseWithErrorsDto(errorList)) { StatusCode = StatusCodes.Status400BadRequest };
             }
         }
     }

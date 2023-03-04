@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Extensions;
-using GBertolini.UsersService.Models.Models.Implementation;
 using GBertolini.UsersService.Models.Models.Interfaces;
 using GBertolini.UsersService.Models.Sanitizers;
 

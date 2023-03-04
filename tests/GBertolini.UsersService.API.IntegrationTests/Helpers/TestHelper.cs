@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using GBertolini.UsersService.Models.Dto;
+using GBertolini.UsersService.Models.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,20 @@ namespace GBertolini.UsersService.API.IntegrationTests.Helpers
 {
     public static class TestHelper
     {
+        /// <summary>
+        /// Creates an instance of UserDto using example data
+        /// </summary>
+        public static UserDto CreateUserDto(decimal money, UserType userType)
+            => new UserDto
+            {
+                Name = "German Bertolini",
+                Address = "Buenos Aires, Argentina",
+                Email = "german.bertolini@gmail.com",
+                Money = money,
+                Phone = "1234-1234",
+                UserType = userType
+            };
+
         /// <summary>
         /// Create an instance of HttpContent to send json content
         /// </summary>
