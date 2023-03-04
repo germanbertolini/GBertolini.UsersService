@@ -1,5 +1,7 @@
+using AutoMapper;
 using GBertolini.UsersService.API.Extensions;
 using GBertolini.UsersService.API.Filters;
+using GBertolini.UsersService.Models.AutoMapperProfiles;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddSingleton(MapperConfig.InitializeAutoMapper().CreateMapper());
 
 // Adding custom filter
 builder.Services.AddValidateInputModelFilter();

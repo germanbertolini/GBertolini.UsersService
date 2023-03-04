@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Extensions;
-using GBertolini.UsersService.Models.Models.Implementation;
+using GBertolini.UsersService.Models.Models.Interfaces;
 
 namespace GBertolini.UsersService.Models.AutoMapperProfiles
 {
@@ -9,7 +9,7 @@ namespace GBertolini.UsersService.Models.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>()
+            CreateMap<IUser, UserDto>()
                     .ForMember(
                         dest => dest.Name,
                         opt => opt.MapFrom(src => src.Name)

@@ -9,15 +9,10 @@ namespace GBertolini.UsersService.Models.Models.Implementation
 {
     public class SuperUser : User
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public decimal Money { get; set; }
+        private decimal ResolveGiftPercentage()
+                => Money > 100 ? (decimal)0.20 : (decimal)0.00;
 
         public override void ApplyGift()
-        {
-            throw new NotImplementedException();
-        }
+                => Money *= (1 + ResolveGiftPercentage());
     }
 }
