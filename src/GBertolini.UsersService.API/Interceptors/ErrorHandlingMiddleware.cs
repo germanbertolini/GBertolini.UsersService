@@ -1,5 +1,6 @@
 ﻿using GBertolini.UsersService.Business.Exceptions;
 using GBertolini.UsersService.Models.Dto.Response;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -20,6 +21,9 @@ namespace GBertolini.UsersService.API.Interceptors
 
         public async Task InvokeAsync(HttpContext context)
         {
+            var startedTime = DateTime.Now;
+            _logger.LogInformation($"Transaction started at {startedTime}");
+
             try
             {
                 await _next(context);
@@ -28,6 +32,9 @@ namespace GBertolini.UsersService.API.Interceptors
             {
                 await HandleExceptionAsync(context, ex);
             }
+
+            var finishedTime = DateTime.Now;
+            _logger.LogInformation($"Transaction finished at {finishedTime} after {(finishedTime - startedTime).TotalMilliseconds} miliseconds.");
         }
 
         /// <summary>
@@ -40,11 +47,13 @@ namespace GBertolini.UsersService.API.Interceptors
 
             if (ex is BusinessException)
             {
-                statusCode = StatusCodes.Status400BadRequest;
+                statusCode = (int)((BusinessException)ex).GetStatusCode();
                 response = ex.Message;
             }
-
-            _logger.LogError(ex, $"Transaction finished on http {statusCode}. Context: {context}");
+            else
+            {
+                _logger.LogError(ex, $"Transaction finished on http {statusCode}. Context: {context}");
+            }
 
             await WriteExceptionAsync(context, response, statusCode);
         }

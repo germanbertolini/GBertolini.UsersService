@@ -17,6 +17,10 @@ builder.Services.AddSingleton(MapperConfig.InitializeAutoMapper().CreateMapper()
 // Adding custom filter
 builder.Services.AddValidateInputModelFilter();
 
+//Adding custom services
+builder.Services.AddUsersServices();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

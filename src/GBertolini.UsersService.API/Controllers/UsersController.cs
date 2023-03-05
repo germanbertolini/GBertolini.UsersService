@@ -1,4 +1,6 @@
+using AutoMapper;
 using GBertolini.UsersService.API.Filters;
+using GBertolini.UsersService.Business.Users.Implementation;
 using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Dto.Response;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +14,20 @@ namespace GBertolini.UsersService.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ILogger<UsersController> _logger;
+        private readonly UsersBusiness _business;
 
-        public UsersController(ILogger<UsersController> logger)
+        public UsersController(ILogger<UsersController> logger, UsersBusiness business)
         {
             _logger = logger;
+            _business = business;
         }
 
         [HttpPost]
         [ActionName("create")]
-        public Task<ResponseDto<UserDto>> PostCreateAsync([FromBody] UserDto userDto)
+        public async Task<ResponseDto> PostCreateAsync([FromBody] UserDto userDto)
         {
-            return Task.FromResult(new ResponseDto<UserDto>(new UserDto()));
+            await _business.CreateAsync(userDto);
+            return new ResponseDto();
         }
     }
 }

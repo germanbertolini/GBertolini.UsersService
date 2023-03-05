@@ -1,5 +1,7 @@
 ﻿using GBertolini.UsersService.API.Filters;
 using GBertolini.UsersService.API.Interceptors;
+using GBertolini.UsersService.Business.Users.Implementation;
+using GBertolini.UsersService.DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GBertolini.UsersService.API.Extensions
@@ -9,6 +11,16 @@ namespace GBertolini.UsersService.API.Extensions
     /// </summary>
     public static class StartupExtensions
     {
+        /// <summary>
+        /// Dependency Injection: Setup Users services
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AddUsersServices(this IServiceCollection services)
+        {
+            services.AddScoped<UsersRepository>();
+            services.AddScoped<UsersBusiness>();
+        }
+
         /// <summary>
         /// Setup ValidateInputModelFilter to be used as model validator in transactions
         /// </summary>
