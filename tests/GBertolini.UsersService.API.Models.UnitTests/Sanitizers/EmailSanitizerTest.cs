@@ -1,13 +1,5 @@
 ﻿using FluentAssertions;
-using GBertolini.UsersService.Models.Enums;
-using GBertolini.UsersService.Models.Factories;
-using GBertolini.UsersService.Models.Models.Implementation;
 using GBertolini.UsersService.Models.Sanitizers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GBertolini.UsersService.API.Models.UnitTests.Sanitizers
 {

@@ -39,7 +39,7 @@ namespace GBertolini.UsersService.Models.AutoMapperProfiles
             CreateMap<UserDto, IUser>()
                     .ForMember(
                         dest => dest.Name,
-                        opt => opt.MapFrom(src => src.Name)
+                        opt => opt.MapFrom(src => StringSanitizer.Sanitize(src.Name))
                     )
                     .ForMember(
                         dest => dest.Email,
@@ -47,11 +47,11 @@ namespace GBertolini.UsersService.Models.AutoMapperProfiles
                     )
                     .ForMember(
                         dest => dest.Address,
-                        opt => opt.MapFrom(src => src.Address)
+                        opt => opt.MapFrom(src => StringSanitizer.Sanitize(src.Address))
                     )
                     .ForMember(
                         dest => dest.Phone,
-                        opt => opt.MapFrom(src => src.Phone)
+                        opt => opt.MapFrom(src => StringSanitizer.Sanitize(src.Phone))
                     )
                     .ForMember(
                         dest => dest.Money,
