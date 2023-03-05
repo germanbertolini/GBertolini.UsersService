@@ -18,6 +18,7 @@ builder.Services.AddSingleton(MapperConfig.InitializeAutoMapper().CreateMapper()
 builder.Services.AddValidateInputModelFilter();
 
 //Adding custom services
+builder.Services.AddUsersDbContext();
 builder.Services.AddUsersServices();
 
 
@@ -36,6 +37,9 @@ app.UseAuthorization();
 
 // Using custom middleware
 app.UseInterceptorErrorHandlingMiddleware();
+
+//Calling custom services
+app.EnsureDatabaseTables();
 
 app.MapControllers();
 

@@ -7,10 +7,9 @@ namespace GBertolini.UsersService.DataAccess.Repositories
     {
         private readonly UsersDbContext _db;
 
-        public UsersRepository()
+        public UsersRepository(UsersDbContext db)
         {
-            _db = new UsersDbContext();
-            _db.Database.EnsureCreatedAsync().Wait();
+            _db = db;
         }
 
         /// <summary>

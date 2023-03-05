@@ -1,6 +1,7 @@
 ﻿using GBertolini.UsersService.API.Filters;
 using GBertolini.UsersService.API.Interceptors;
 using GBertolini.UsersService.Business.Users.Implementation;
+using GBertolini.UsersService.DataAccess;
 using GBertolini.UsersService.DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,16 @@ namespace GBertolini.UsersService.API.Extensions
     public static class StartupExtensions
     {
         /// <summary>
+        /// Dependency Injection: Setup UsersDbContext
+        /// </summary>
+        public static void AddUsersDbContext(this IServiceCollection services)
+        {
+            services.AddTransient<UsersDbContext>();
+        }
+
+        /// <summary>
         /// Dependency Injection: Setup Users services
         /// </summary>
-        /// <param name="services"></param>
         public static void AddUsersServices(this IServiceCollection services)
         {
             services.AddScoped<UsersRepository>();
@@ -39,6 +47,15 @@ namespace GBertolini.UsersService.API.Extensions
         public static void UseInterceptorErrorHandlingMiddleware(this IApplicationBuilder builder)
         {
             builder.UseMiddleware<ErrorHandlingMiddleware>();
+        }
+
+        /// <summary>
+        /// Creates Database structure if it does not already exist
+        /// </summary>
+        public static void EnsureDatabaseTables(this IApplicationBuilder builder)
+        {
+            var db = (UsersDbContext)builder.ApplicationServices.GetService(typeof(UsersDbContext));
+            db.Database.EnsureCreatedAsync().Wait();
         }
     }
 }
