@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace GBertolini.UsersService.Business.Exceptions
 {
     public class BusinessException : Exception
     {
-        public BusinessException()
-        {
-        }
+        private HttpStatusCode _statusCode;
+        public HttpStatusCode GetStatusCode() => _statusCode;
 
-        public BusinessException(string message)
+        public BusinessException(HttpStatusCode statusCode, string message)
             : base(message)
         {
+            _statusCode = statusCode;
         }
 
-        public BusinessException(string message, Exception inner)
+        public BusinessException(HttpStatusCode statusCode, string message, Exception inner)
             : base(message, inner)
         {
+            _statusCode = statusCode;
         }
     }
 }
