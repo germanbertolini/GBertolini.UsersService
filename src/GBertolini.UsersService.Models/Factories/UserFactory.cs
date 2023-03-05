@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Extensions;
+using GBertolini.UsersService.Models.Models.Implementations;
 using GBertolini.UsersService.Models.Models.Interfaces;
 
 namespace GBertolini.UsersService.Models.Factories
@@ -11,7 +12,7 @@ namespace GBertolini.UsersService.Models.Factories
         {
             var user = Activator.CreateInstance(userDto.UserType.GetUserClassType()) as IUser;
             mapper.Map<UserDto, IUser>(userDto, user);
-            user.ApplyGift();
+            ((User)user).ApplyGift();
             return user;
         }
     }

@@ -1,14 +1,11 @@
 ﻿using GBertolini.UsersService.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GBertolini.UsersService.Models.Models.Interfaces;
 
-namespace GBertolini.UsersService.Models.Models.Interfaces
+namespace GBertolini.UsersService.Models.Models.Implementations
 {
-    public interface IUser
+    public class User : IUser
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
@@ -16,6 +13,7 @@ namespace GBertolini.UsersService.Models.Models.Interfaces
         public decimal Money { get; set; }
         public UserType UserType { get; set; }
 
-        public void ApplyGift();
+        public virtual void ApplyGift()
+            => throw new NotImplementedException();
     }
 }

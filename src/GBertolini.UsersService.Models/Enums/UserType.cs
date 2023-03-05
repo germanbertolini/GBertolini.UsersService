@@ -1,5 +1,5 @@
 ﻿using GBertolini.UsersService.Models.Attributes;
-using GBertolini.UsersService.Models.Models.Implementation;
+using GBertolini.UsersService.Models.Models.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +13,15 @@ namespace GBertolini.UsersService.Models.Enums
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum UserType
     {
-        [EnumMember(Value = "normal")]
+        [EnumMember(Value = "Normal")]
         [Factory(CreateInstanceOf: typeof(NormalUser))]
         Normal,
 
-        [EnumMember(Value = "super_user")]
+        [EnumMember(Value = "SuperUser")]
         [Factory(CreateInstanceOf: typeof(SuperUser))]
         SuperUser,
 
-        [EnumMember(Value = "premium")]
+        [EnumMember(Value = "Premium")]
         [Factory(CreateInstanceOf: typeof(PremiumUser))]
         Premium
     }
