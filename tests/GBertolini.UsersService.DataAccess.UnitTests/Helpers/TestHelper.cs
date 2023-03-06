@@ -9,6 +9,9 @@ namespace GBertolini.UsersService.DataAccess.UnitTests.Helpers
 {
     public static class TestHelper
     {
+        /// <summary>
+        /// Builds a mocked UsersDbContext instance for tests
+        /// </summary>
         public static UsersDbContext BuildMockedUsersDbContext()
         {
             var data = new List<User>();
@@ -28,6 +31,9 @@ namespace GBertolini.UsersService.DataAccess.UnitTests.Helpers
             return mockContext.Object;
         }
 
+        /// <summary>
+        /// Returns the predicate to find users by name, address, email and phone
+        /// </summary>
         public static Expression<Func<User, bool>> PredicateToMatchUser(User user)
             => (u) => u.Name.Equals(user.Name)
                         && u.Address.Equals(user.Address)
