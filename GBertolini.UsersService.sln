@@ -13,13 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBertolini.UsersService.Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B4B7DBEF-9B9E-49B7-B90E-3A1C206BBB5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBertolini.UsersService.Business.UnitTests", "tests\GBertolini.UsersService.Business.UnitTests\GBertolini.UsersService.Business.UnitTests.csproj", "{C319FBB7-48BB-4EC5-9649-997374309C95}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBertolini.UsersService.Models", "src\GBertolini.UsersService.Models\GBertolini.UsersService.Models.csproj", "{8308B3AA-5E81-427F-8133-32FAA15B4141}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBertolini.UsersService.API.IntegrationTests", "tests\GBertolini.UsersService.API.IntegrationTests\GBertolini.UsersService.API.IntegrationTests.csproj", "{9FC7FFA6-2BF5-49A7-89B7-4D5B6752B386}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GBertolini.UsersService.API.Models.UnitTests", "tests\GBertolini.UsersService.API.Models.UnitTests\GBertolini.UsersService.API.Models.UnitTests.csproj", "{BDFF9480-7199-4A8C-8860-CD90B6FBE8A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBertolini.UsersService.API.Models.UnitTests", "tests\GBertolini.UsersService.API.Models.UnitTests\GBertolini.UsersService.API.Models.UnitTests.csproj", "{BDFF9480-7199-4A8C-8860-CD90B6FBE8A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{4CFBDE0C-0282-4767-BA0F-0314926D818B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CFBDE0C-0282-4767-BA0F-0314926D818B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CFBDE0C-0282-4767-BA0F-0314926D818B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C319FBB7-48BB-4EC5-9649-997374309C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C319FBB7-48BB-4EC5-9649-997374309C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C319FBB7-48BB-4EC5-9649-997374309C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C319FBB7-48BB-4EC5-9649-997374309C95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8308B3AA-5E81-427F-8133-32FAA15B4141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8308B3AA-5E81-427F-8133-32FAA15B4141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8308B3AA-5E81-427F-8133-32FAA15B4141}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,7 +59,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4CFBDE0C-0282-4767-BA0F-0314926D818B} = {B4B7DBEF-9B9E-49B7-B90E-3A1C206BBB5A}
-		{C319FBB7-48BB-4EC5-9649-997374309C95} = {B4B7DBEF-9B9E-49B7-B90E-3A1C206BBB5A}
 		{9FC7FFA6-2BF5-49A7-89B7-4D5B6752B386} = {B4B7DBEF-9B9E-49B7-B90E-3A1C206BBB5A}
 		{BDFF9480-7199-4A8C-8860-CD90B6FBE8A3} = {B4B7DBEF-9B9E-49B7-B90E-3A1C206BBB5A}
 	EndGlobalSection

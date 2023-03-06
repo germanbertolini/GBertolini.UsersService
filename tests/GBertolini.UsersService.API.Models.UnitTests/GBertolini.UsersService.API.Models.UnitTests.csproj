@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\GBertolini.UsersService.DataAccess\GBertolini.UsersService.DataAccess.csproj" />
     <ProjectReference Include="..\..\src\GBertolini.UsersService.Models\GBertolini.UsersService.Models.csproj" />
   </ItemGroup>
 

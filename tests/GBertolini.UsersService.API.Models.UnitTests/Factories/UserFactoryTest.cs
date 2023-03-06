@@ -6,6 +6,7 @@ using GBertolini.UsersService.Models.Extensions;
 using AutoMapper;
 using GBertolini.UsersService.Models.Sanitizers;
 using GBertolini.UsersService.Models.Models.Implementations;
+using GBertolini.UsersService.DataAccess;
 
 namespace GBertolini.UsersService.API.Models.UnitTests.Factories
 {

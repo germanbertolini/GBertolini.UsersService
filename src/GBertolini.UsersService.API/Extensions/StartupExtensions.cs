@@ -17,7 +17,7 @@ namespace GBertolini.UsersService.API.Extensions
         /// </summary>
         public static void AddUsersDbContext(this IServiceCollection services)
         {
-            services.AddTransient<UsersDbContext>();
+            services.AddSingleton<UsersDbContext>();
         }
 
         /// <summary>

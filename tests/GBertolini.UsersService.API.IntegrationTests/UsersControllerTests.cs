@@ -5,10 +5,7 @@ using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Dto.Response;
 using GBertolini.UsersService.Models.Enums;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Newtonsoft.Json;
 using System.Net;
-using System.Text;
 
 namespace GBertolini.UsersService.API.IntegrationTests
 {
@@ -18,6 +15,7 @@ namespace GBertolini.UsersService.API.IntegrationTests
         
         public UsersControllerTests()
         {
+            TestHelper.PrepareEnvironment();
             var factory = new WebApplicationFactory<UsersController>();
             _httpClient = factory.CreateClient();
         }

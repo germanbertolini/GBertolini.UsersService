@@ -1,4 +1,5 @@
-﻿using GBertolini.UsersService.Models.Dto;
+﻿using GBertolini.UsersService.DataAccess;
+using GBertolini.UsersService.Models.Dto;
 using GBertolini.UsersService.Models.Enums;
 using Newtonsoft.Json;
 using System;
@@ -47,6 +48,14 @@ namespace GBertolini.UsersService.API.IntegrationTests.Helpers
             }
             catch { }
             return content;
+        }
+
+        /// <summary>
+        /// Prepares the environment
+        /// </summary>
+        public static void PrepareEnvironment()
+        {
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "UnitTesting");
         }
     }
 }
