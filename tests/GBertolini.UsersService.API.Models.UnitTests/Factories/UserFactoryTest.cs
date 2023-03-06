@@ -1,20 +1,11 @@
-﻿using GBertolini.UsersService.Models.Dto;
-using GBertolini.UsersService.Models.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GBertolini.UsersService.Models.Enums;
 using GBertolini.UsersService.Models.Factories;
 using FluentAssertions;
-using GBertolini.UsersService.Models.Models.Implementation;
 using GBertolini.UsersService.API.Models.UnitTests.Helpers;
 using GBertolini.UsersService.Models.Extensions;
 using AutoMapper;
-using GBertolini.UsersService.Models.AutoMapperProfiles;
 using GBertolini.UsersService.Models.Sanitizers;
+using GBertolini.UsersService.Models.Models.Implementations;
 
 namespace GBertolini.UsersService.API.Models.UnitTests.Factories
 {

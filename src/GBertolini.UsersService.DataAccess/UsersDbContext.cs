@@ -8,7 +8,7 @@ namespace GBertolini.UsersService.DataAccess
     {
         private const string _dbFileName = "users.db";
 
-        public DbSet<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
